@@ -1,5 +1,5 @@
 <template>
-    <AddNewComponent @added-to-do = addToDo />
+    <AddNewItem @added-to-do = addToDo />
 
     <ul class="list">
         <li 
@@ -22,13 +22,13 @@
 
 <script setup>
     import axios from 'axios'
-    import {ref} from "@vue/reactivity";
-    import AddNewComponent from "@/components/AddNewComponent.vue"
+    import {ref} from "vue";
+    import AddNewItem from "@/components/AddNewItem.vue"
 
     const listItems = ref(null);
     const USERID = 26;
 
-    const getTodos = async () => {
+    async function getTodos() {
       await axios.get(`https://dummyjson.com/todos/user/${USERID}`)
       .then(function (response) {
         if (response.data) {
@@ -39,7 +39,7 @@
         console.log(error);
       })
     };
-    getTodos();
+    getTodos()
 
     function addToDo(item) {
       listItems.value.push({

@@ -1,10 +1,10 @@
 <script setup>
-import ToDoComponent from '@/components/ToDoComponent.vue'
+
 </script>
 
 <template>
   <main>
-    <ToDoComponent />
+    <router-view />
   </main>
 </template>
 
