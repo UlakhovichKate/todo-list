@@ -1,21 +1,21 @@
-import { createRouter, createWebHistory } from "vue-router";
+import {createRouter, createWebHistory} from 'vue-router';
 
 const routes = [
   {
-    path: "/",
-    name: "homePage",
-    component: () => import("../views/PageHome.vue"),
+    path: '/',
+    name: 'homePage',
+    component: () => import('../views/PageHome.vue'),
     meta: {
-      title: "Homepage",
-      layout: "default",
+      title: 'Homepage',
+      layout: 'default',
     },
   },
   {
-    path: "/:pathMatch(.*)*",
-    name: "notFoundPage",
-    component: () => import("../views/PageNotFound.vue"),
+    path: '/:pathMatch(.*)*',
+    name: 'notFoundPage',
+    component: () => import('../views/PageNotFound.vue'),
     meta: {
-      layout: "default",
+      layout: 'default',
     },
   },
 ];
@@ -23,7 +23,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  linkActiveClass: "active",
+  linkActiveClass: 'active',
 });
 
 export default router;
