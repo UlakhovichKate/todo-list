@@ -17,17 +17,12 @@
   const listItems = ref(null);
   const USERID = 26;
 
-  const getTodos = () => {
-    axios
-      .get(`https://dummyjson.com/todos/user/${USERID}`)
-      .then(function (response) {
-        if (response.data) {
-          listItems.value = response.data.todos;
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  const  getTodos = async () => {
+    let response = await axios.get(`https://dummyjson.com/todos/user/${USERID}`)
+
+    if (response.data) {
+      listItems.value = response.data.todos;
+    }
   };
   getTodos();
 
