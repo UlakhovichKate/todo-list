@@ -19,16 +19,16 @@
 <script setup>
   import {ref} from 'vue';
 
-  const emit = defineEmits(['addedToDo']);
+  const emit = defineEmits(['addedTodo']);
 
   const text = ref('');
 
-  function addToDo() {
+  const addToDo = () => {
     if (text.value) {
-      emit('addedToDo', text);
+      emit('addedTodo', text);
       text.value = '';
     }
-  }
+  };
 </script>
 
 <style type="scss" scoped>
