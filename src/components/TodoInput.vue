@@ -1,7 +1,7 @@
 <template>
-  <div class="input-group">
+  <div class="bar">
     <input
-      v-model="text"
+      v-model="todoContent"
       type="text"
       class="input"
       placeholder="add new todo"
@@ -9,7 +9,7 @@
     <button
       @click="addTodo"
       type="button"
-      class="btn btn--submit"
+      class="btn btn_submit"
     >
       Create
     </button>
@@ -17,26 +17,33 @@
 </template>
 
 <script setup>
-  import {ref} from 'vue';
+import {reactive, ref} from 'vue';
 
-  const emit = defineEmits(['addedTodo']);
+  const emit = defineEmits(['addTodo']);
 
-  const text = ref('');
+  const todoContent = ref('');
 
+  const newTodoObject = reactive([])
   const addTodo = () => {
-    if (text.value) {
-      emit('addedTodo', text);
-      text.value = '';
+    if (todoContent.value) {
+      newTodoObject.value = {
+        id: (new Date()).getTime(),
+        todo: todoContent.value,
+        completed: false,
+        userId: 26,
+      }
+      emit('addTodo', newTodoObject);
+      todoContent.value = '';
     }
   };
 </script>
 
 <style type="scss" scoped>
-  .input-group {
+  .bar {
     margin-bottom: 50px;
   }
 
-  .btn--submit {
+  .btn_submit {
     background-color: transparent;
     border: 1px solid;
     cursor: pointer;

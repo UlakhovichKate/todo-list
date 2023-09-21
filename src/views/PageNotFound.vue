@@ -3,12 +3,12 @@
     <div class="page__content-wrapper">
       <div class="content">
         <div class="content__title">Page not found</div>
-        <base-button
-          theme="primary"
+        <button
           @click="$router.back()"
+          type="button"
         >
           Back
-        </base-button>
+        </button>
       </div>
     </div>
   </div>

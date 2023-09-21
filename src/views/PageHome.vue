@@ -1,10 +1,12 @@
 <template>
   <div class="page">
-    <TodoInput @added-todo="addTodo" />
-    <TodoList
-      :list-items="listItems"
-      @removed-todo="removeTodo"
-    />
+    <div class="page__content-wrapper">
+      <todo-input @addTodo="addTodo" />
+      <todo-list
+        :todo-items="todoItems"
+        @removeTodo="removeTodo"
+      />
+    </div>
   </div>
 </template>
 
@@ -14,28 +16,23 @@
   import axios from 'axios';
   import {ref} from 'vue';
 
-  const listItems = ref(null);
-  const USERID = 26;
+  const todoItems = ref([]);
+  const USER_ID = 26;
 
   const  getTodos = async () => {
-    let response = await axios.get(`https://dummyjson.com/todos/user/${USERID}`)
+    let response = await axios.get(`https://dummyjson.com/todos/user/${USER_ID}`)
 
     if (response.data) {
-      listItems.value = response.data.todos;
+      todoItems.value = response.data.todos;
     }
   };
   getTodos();
 
   const addTodo = (item) => {
-    listItems.value.push({
-      id: listItems.value.length + 1,
-      todo: item.value,
-      completed: false,
-      userId: USERID,
-    });
+    todoItems.value.push(item.value);
   };
 
-  const removeTodo = (id) => {
-    listItems.value = listItems.value.filter((el) => el.id !== id);
+  const removeTodo = (item) => {
+    todoItems.value.splice(todoItems.value.indexOf(item), 1);
   };
 </script>
