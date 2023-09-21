@@ -13,18 +13,15 @@
 <script setup>
   import TodoInput from '@/components/TodoInput.vue';
   import TodoList from '@/components/TodoList.vue';
-  import axios from 'axios';
   import {ref} from 'vue';
+  import {getAllTodos} from '@/api/apiTodos';
 
   const todoItems = ref([]);
-  const USER_ID = 26;
 
   const getTodos = async () => {
-    let response = await axios.get(`https://dummyjson.com/todos/user/${USER_ID}`);
+    let response = await getAllTodos();
 
-    if (response.data) {
-      todoItems.value = response.data.todos;
-    }
+    todoItems.value = response.data?.todos;
   };
   getTodos();
 

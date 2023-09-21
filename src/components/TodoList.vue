@@ -1,42 +1,42 @@
 <template>
-  <div class="list">
+  <div class="todo-list">
     <div
       v-for="(item, index) in todoItems"
       :id="index"
       :key="item.id"
       :class="[item.completed ? 'completed' : 'active']"
-      class="item"
+      class="todo-list__item"
     >
       <input
         v-if="item.isEditing"
         v-model="item.todo"
         type="text"
-        class="input"
+        class="todo-list__input"
       />
       <span
         v-else
-        class="name"
+        class="todo-list__name"
       >
         {{ item.todo }}
       </span>
 
       <button
         @click="editTodo(item)"
-        class="btn btn_edit"
+        class="todo-list__btn todo-list__btn_edit"
       >
         &#9998;
       </button>
       <button
         v-if="!item.completed"
         @click="markComplete(item)"
-        class="btn btn_complete"
+        class="todo-list__btn todo-list__btn_complete"
       >
         &#10003;
       </button>
       <button
         v-else
         @click="removeTodo(item)"
-        class="btn btn_remove"
+        class="todo-list__btn todo-list__btn_remove"
       >
         X
       </button>
@@ -74,12 +74,12 @@
 </script>
 
 <style type="scss" scoped>
-  .list {
+  .todo-list {
     max-width: 500px;
     width: 100%;
   }
 
-  .item {
+  .todo-list__item {
     display: grid;
     grid-template-columns: 1fr 30px 30px;
     padding: 5px 10px;
@@ -97,7 +97,7 @@
     }
   }
 
-  .btn {
+  .todo-list__btn {
     border: none;
     background: transparent;
     line-height: 1;
@@ -107,12 +107,12 @@
       opacity: 0.7;
     }
 
-    &.btn_remove {
+    &.todo-list__btn_remove {
       background-color: #111;
       color: #fff;
     }
 
-    &.btn_complete {
+    &.todo-list__btn_complete {
       background-color: #20763c;
       color: #fff;
     }
