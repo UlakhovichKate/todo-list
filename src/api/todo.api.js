@@ -7,4 +7,4 @@ export const getTodos = () => {
     url: `https://dummyjson.com/todos/user/${USER_ID}`,
     method: 'get',
   });
-}
+};

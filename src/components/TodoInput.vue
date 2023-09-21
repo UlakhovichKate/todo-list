@@ -17,21 +17,21 @@
 </template>
 
 <script setup>
-import {reactive, ref} from 'vue';
+  import {reactive, ref} from 'vue';
 
   const emit = defineEmits(['addTodo']);
 
   const todoContent = ref('');
 
-  const newTodoObject = reactive([])
+  const newTodoObject = reactive([]);
   const addTodo = () => {
     if (todoContent.value) {
       newTodoObject.value = {
-        id: (new Date()).getTime(),
+        id: new Date().getTime(),
         todo: todoContent.value,
         completed: false,
         userId: 26,
-      }
+      };
       emit('addTodo', newTodoObject);
       todoContent.value = '';
     }

@@ -8,35 +8,35 @@
       class="item"
     >
       <input
-          v-if="item.isEditing"
-          v-model="item.todo"
-          type="text"
-          class="input"
+        v-if="item.isEditing"
+        v-model="item.todo"
+        type="text"
+        class="input"
       />
       <span
-          v-else
-          class="name"
+        v-else
+        class="name"
       >
         {{ item.todo }}
       </span>
 
       <button
-          @click="editTodo(item)"
-          class="btn btn_edit"
+        @click="editTodo(item)"
+        class="btn btn_edit"
       >
         &#9998;
       </button>
       <button
-          v-if="!item.completed"
-          @click="markComplete(item)"
-          class="btn btn_complete"
+        v-if="!item.completed"
+        @click="markComplete(item)"
+        class="btn btn_complete"
       >
         &#10003;
       </button>
       <button
-          v-else
-          @click="removeTodo(item)"
-          class="btn btn_remove"
+        v-else
+        @click="removeTodo(item)"
+        class="btn btn_remove"
       >
         X
       </button>
@@ -45,7 +45,7 @@
 </template>
 
 <script setup>
-import {computed} from 'vue';
+  import {computed} from 'vue';
 
   const props = defineProps({
     todoItems: {

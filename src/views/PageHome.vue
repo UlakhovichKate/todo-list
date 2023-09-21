@@ -19,8 +19,8 @@
   const todoItems = ref([]);
   const USER_ID = 26;
 
-  const  getTodos = async () => {
-    let response = await axios.get(`https://dummyjson.com/todos/user/${USER_ID}`)
+  const getTodos = async () => {
+    let response = await axios.get(`https://dummyjson.com/todos/user/${USER_ID}`);
 
     if (response.data) {
       todoItems.value = response.data.todos;

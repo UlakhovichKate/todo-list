@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
 const httpClient = axios.create({
   baseURL: 'https://dummyjson.com/todos',
   headers: {
-    "Content-Type": "application/json",
-  }
+    'Content-Type': 'application/json',
+  },
 });
 
-export { httpClient };
+export {httpClient};

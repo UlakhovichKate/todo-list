@@ -5,13 +5,13 @@ const routes = [
     path: '',
     name: 'layout',
     component: RouterView,
-    redirect: { name: "homePage" },
+    redirect: {name: 'homePage'},
     children: [
       {
         path: '/',
         name: 'homePage',
         component: () => import('../views/PageHome.vue'),
-      }
+      },
     ],
     meta: {
       layout: 'default',
