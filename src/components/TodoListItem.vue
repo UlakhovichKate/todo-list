@@ -12,7 +12,7 @@
 
     <div class="buttons">
       <button
-        @click="onEditingMode"
+        @click="editTodo"
         class="btn btn--edit"
       >
         &#9998;
@@ -26,7 +26,7 @@
       </button>
       <button
         v-else
-        @click="removeFromList"
+        @click="removeTodo"
         class="btn btn--remove"
       >
         X
@@ -50,11 +50,11 @@
     item.value.completed = true;
   };
 
-  const removeFromList = () => {
+  const removeTodo = () => {
     emit('removedTodo');
   };
 
-  const onEditingMode = (e) => {
+  const editTodo = (e) => {
     let parent = e.target.closest('.item');
     parent.classList.toggle('edit');
   };

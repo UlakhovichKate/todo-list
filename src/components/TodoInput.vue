@@ -7,7 +7,7 @@
       placeholder="add new todo"
     />
     <button
-      @click="addToDo"
+      @click="addTodo"
       type="button"
       class="btn btn--submit"
     >
@@ -23,7 +23,7 @@
 
   const text = ref('');
 
-  const addToDo = () => {
+  const addTodo = () => {
     if (text.value) {
       emit('addedTodo', text);
       text.value = '';

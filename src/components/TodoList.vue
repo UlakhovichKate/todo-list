@@ -7,7 +7,7 @@
     >
       <TodoListItem
         :list-item="item"
-        @removed-todo="removeFromList(item.id)"
+        @removed-todo="removeTodo(item.id)"
       />
     </li>
   </ul>
@@ -25,7 +25,7 @@
 
   const listItems = computed(() => props.listItems);
 
-  const removeFromList = (id) => {
+  const removeTodo = (id) => {
     emit('removedTodo', id);
   };
 </script>

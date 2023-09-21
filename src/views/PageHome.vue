@@ -3,7 +3,7 @@
     <TodoInput @added-todo="addTodo" />
     <TodoList
       :list-items="listItems"
-      @removed-todo="removeFromList"
+      @removed-todo="removeTodo"
     />
   </div>
 </template>
@@ -40,7 +40,7 @@
     });
   };
 
-  const removeFromList = (id) => {
+  const removeTodo = (id) => {
     listItems.value = listItems.value.filter((el) => el.id !== id);
   };
 </script>
