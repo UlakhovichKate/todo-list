@@ -1,12 +1,19 @@
-import {createRouter, createWebHistory} from 'vue-router';
+import {createRouter, createWebHistory, RouterView} from 'vue-router';
 
 const routes = [
   {
-    path: '/',
-    name: 'homePage',
-    component: () => import('../views/PageHome.vue'),
+    path: '',
+    name: 'layout',
+    component: RouterView,
+    redirect: { name: "homePage" },
+    children: [
+      {
+        path: '/',
+        name: 'homePage',
+        component: () => import('../views/PageHome.vue'),
+      }
+    ],
     meta: {
-      title: 'Homepage',
       layout: 'default',
     },
   },
