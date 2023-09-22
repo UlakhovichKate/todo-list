@@ -67,7 +67,6 @@
     item.completed = true;
   };
 
-  //const isEditing = ref(false);
   const editTodo = (el) => {
     el.isEditing = el.isEditing ? !el.isEditing : true;
   };
@@ -91,7 +90,7 @@
     }
 
     &.completed {
-      .name {
+      .todo-list__name {
         text-decoration: line-through;
       }
     }
