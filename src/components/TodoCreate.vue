@@ -38,25 +38,25 @@
   };
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
   .bar {
     display: grid;
     grid-template-columns: 1fr 80px;
     margin-bottom: 30px;
-  }
 
-  .bar__input {
-    padding: 5px 10px;
-  }
+    &__input {
+      padding: 5px 10px;
+    }
 
-  .bar__btn {
-    padding: 6px 10px;
-    background-color: transparent;
-    border: 1px solid;
-    cursor: pointer;
+    &__btn {
+      padding: 6px 10px;
+      background-color: transparent;
+      border: 1px solid;
+      cursor: pointer;
 
-    &:hover {
-      background-color: #eee;
+      &:hover {
+        background-color: #eee;
+      }
     }
   }
 </style>

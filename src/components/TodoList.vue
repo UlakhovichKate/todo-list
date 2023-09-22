@@ -27,14 +27,12 @@
         &#9998;
       </button>
       <button
-        v-if="!item.completed"
         @click="markComplete(item)"
         class="todo-list__btn todo-list__btn_complete"
       >
         &#10003;
       </button>
       <button
-        v-else
         @click="removeTodo(item)"
         class="todo-list__btn todo-list__btn_remove"
       >
@@ -51,7 +49,6 @@
     todoItems: {
       type: Object,
       required: true,
-      default: () => {},
     },
   });
 
@@ -72,48 +69,48 @@
   };
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
   .todo-list {
     max-width: 500px;
     width: 100%;
-  }
 
-  .todo-list__item {
-    display: grid;
-    grid-template-columns: 1fr 30px 30px;
-    padding: 5px 10px;
-    border: 1px solid #bbb;
-    background: #fff;
+    &__item {
+      display: grid;
+      grid-template-columns: 1fr 30px 30px 30px;
+      padding: 5px 10px;
+      border: 1px solid #bbb;
+      background: #fff;
 
-    &:not(:last-of-type) {
-      border-bottom: none;
-    }
-
-    &.completed {
-      .todo-list__name {
-        text-decoration: line-through;
+      &:not(:last-of-type) {
+        border-bottom: none;
       }
     }
-  }
 
-  .todo-list__btn {
-    border: none;
-    background: transparent;
-    line-height: 1;
-    cursor: pointer;
+    &__btn {
+      border: none;
+      background: transparent;
+      line-height: 1;
+      cursor: pointer;
 
-    &:hover {
-      opacity: 0.7;
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &_remove {
+        background-color: #111;
+        color: #fff;
+      }
+
+      &_complete {
+        background-color: #20763c;
+        color: #fff;
+      }
     }
 
-    &.todo-list__btn_remove {
-      background-color: #111;
-      color: #fff;
-    }
-
-    &.todo-list__btn_complete {
-      background-color: #20763c;
-      color: #fff;
+    &__name {
+      .completed & {
+        text-decoration: line-through;
+      }
     }
   }
 </style>

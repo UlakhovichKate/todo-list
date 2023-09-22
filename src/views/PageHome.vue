@@ -2,10 +2,10 @@
   <div class="page">
     <div class="page__content-wrapper">
       <div class="todo-component">
-        <todo-input @addTodo="addTodo" />
+        <todo-create @addTodo="addTodo" />
         <todo-list
-            :todo-items="todoItems"
-            @removeTodo="removeTodo"
+          :todo-items="todoItems"
+          @removeTodo="removeTodo"
         />
       </div>
     </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-  import TodoInput from '@/components/TodoInput.vue';
+  import TodoCreate from '@/components/TodoCreate.vue';
   import TodoList from '@/components/TodoList.vue';
   import {ref} from 'vue';
   import {getAllTodos} from '@/api/apiTodos';
@@ -21,7 +21,7 @@
   const todoItems = ref([]);
 
   const getTodos = async () => {
-    let response = await getAllTodos();
+    const response = await getAllTodos();
 
     todoItems.value = response.data?.todos;
   };
@@ -36,9 +36,9 @@
   };
 </script>
 
-<style type="scss" scoped>
-.todo-component {
-  max-width: 500px;
-  margin: 50px auto;
-}
+<style lang="scss" scoped>
+  .todo-component {
+    max-width: 500px;
+    margin: 50px auto;
+  }
 </style>
