@@ -1,29 +1,20 @@
-import {createRouter, createWebHistory, RouterView} from 'vue-router';
+import {createRouter, createWebHistory} from 'vue-router';
 
 const routes = [
   {
     path: '',
-    name: 'layout',
-    component: RouterView,
-    redirect: {name: 'homePage'},
+    component: () => import('../views/PageHome.vue'),
     children: [
       {
         path: '/',
         name: 'homePage',
-        component: () => import('../views/PageHome.vue'),
       },
     ],
-    meta: {
-      layout: 'default',
-    },
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'notFoundPage',
     component: () => import('../views/PageNotFound.vue'),
-    meta: {
-      layout: 'default',
-    },
   },
 ];
 
