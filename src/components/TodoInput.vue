@@ -3,13 +3,13 @@
     <input
       v-model="todoContent"
       type="text"
-      class="input"
+      class="bar__input"
       placeholder="add new todo"
     />
     <button
       @click="addTodo"
       type="button"
-      class="btn btn_submit"
+      class="bar__btn bar__btn_submit"
     >
       Create
     </button>
@@ -40,10 +40,17 @@
 
 <style type="scss" scoped>
   .bar {
-    margin-bottom: 50px;
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    margin-bottom: 30px;
   }
 
-  .btn_submit {
+  .bar__input {
+    padding: 5px 10px;
+  }
+
+  .bar__btn {
+    padding: 6px 10px;
     background-color: transparent;
     border: 1px solid;
     cursor: pointer;

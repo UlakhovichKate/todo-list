@@ -1,11 +1,13 @@
 <template>
   <div class="page">
     <div class="page__content-wrapper">
-      <todo-input @addTodo="addTodo" />
-      <todo-list
-        :todo-items="todoItems"
-        @removeTodo="removeTodo"
-      />
+      <div class="todo-component">
+        <todo-input @addTodo="addTodo" />
+        <todo-list
+            :todo-items="todoItems"
+            @removeTodo="removeTodo"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -33,3 +35,10 @@
     todoItems.value.splice(todoItems.value.indexOf(item), 1);
   };
 </script>
+
+<style type="scss" scoped>
+.todo-component {
+  max-width: 500px;
+  margin: 50px auto;
+}
+</style>
