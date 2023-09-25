@@ -3,10 +3,17 @@
     <div class="page__content-wrapper">
       <div class="todo-component">
         <todo-create @addTodo="addTodo" />
-        <todo-list
-          :todo-items="todoItems"
-          @removeTodo="removeTodo"
-        />
+
+        <div class="todo-list">
+          <todo-item
+            v-for="(item, index) in todoItems"
+            :id="index"
+            :key="item.id"
+            :todo-item="item"
+            @removeTodo="removeTodo"
+          >
+          </todo-item>
+        </div>
       </div>
     </div>
   </div>
@@ -14,7 +21,7 @@
 
 <script setup>
   import TodoCreate from '@/components/TodoCreate.vue';
-  import TodoList from '@/components/TodoList.vue';
+  import TodoItem from '@/components/TodoItem.vue';
   import {ref} from 'vue';
   import {getAllTodos} from '@/api/apiTodos';
 
@@ -40,5 +47,10 @@
   .todo-component {
     max-width: 500px;
     margin: 50px auto;
+  }
+
+  .todo-list {
+    max-width: 500px;
+    width: 100%;
   }
 </style>
