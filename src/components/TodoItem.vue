@@ -18,6 +18,7 @@
     </span>
 
     <button
+      :disabled="item.completed"
       :class="[isEditingRef ? 'editing' : '']"
       class="todo-item__btn todo-item__btn_edit"
       @click="editTodo()"
@@ -107,6 +108,11 @@
       &_edit {
         &.editing {
           color: #888;
+        }
+
+        &:disabled {
+          color: #aaa;
+          cursor: not-allowed;
         }
       }
     }
