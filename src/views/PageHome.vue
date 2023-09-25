@@ -4,7 +4,10 @@
       <div class="todo-component">
         <todo-create @addTodo="addTodo" />
 
-        <div class="todo-list">
+        <div
+          v-if="todoItems.length > 0"
+          class="todo-list"
+        >
           <todo-item
             v-for="(item, index) in todoItems"
             :id="index"
@@ -14,6 +17,7 @@
           >
           </todo-item>
         </div>
+        <div v-else>Nothing to complete</div>
       </div>
     </div>
   </div>
