@@ -1,14 +1,14 @@
 <template>
   <div
-    :class="[item.completed ? 'completed' : 'active']"
+    :class="{isCompleted: item.completed}"
     class="todo-item"
   >
     <input
-      ref="isEditingRef"
-      v-if="isEditingRef"
+      ref="isEditing"
+      v-if="isEditing"
       v-model="item.todo"
       type="text"
-      class="todo-item__input"
+      class="todo-item__name-input"
     />
     <span
       v-else
@@ -19,7 +19,7 @@
 
     <button
       :disabled="item.completed"
-      :class="[isEditingRef ? 'editing' : '']"
+      :class="{isEditing}"
       class="todo-item__btn todo-item__btn_edit"
       @click="editTodo()"
     >
@@ -27,13 +27,13 @@
     </button>
     <button
       class="todo-item__btn todo-item__btn_complete"
-      @click="markComplete(item)"
+      @click="toggleComplete()"
     >
       &#10003;
     </button>
     <button
       class="todo-item__btn todo-item__btn_remove"
-      @click="removeTodo(item)"
+      @click="removeTodo()"
     >
       X
     </button>
@@ -44,7 +44,7 @@
   import {computed, ref} from 'vue';
 
   const props = defineProps({
-    todoItem: {
+    todo: {
       type: Object,
       required: true,
     },
@@ -52,20 +52,20 @@
 
   const emit = defineEmits(['removeTodo']);
 
-  const item = computed(() => props.todoItem);
+  const item = computed(() => props.todo);
 
-  const removeTodo = (item) => {
-    emit('removeTodo', item);
+  const removeTodo = () => {
+    emit('removeTodo', item.value);
   };
 
-  const markComplete = (item) => {
-    item.completed = !item.completed;
+  const toggleComplete = () => {
+    item.value.completed = !item.value.completed;
   };
 
-  const isEditingRef = ref(false);
+  const isEditing = ref(false);
 
   const editTodo = () => {
-    isEditingRef.value = !isEditingRef.value;
+    isEditing.value = !isEditing.value;
   };
 </script>
 
@@ -106,7 +106,7 @@
       }
 
       &_edit {
-        &.editing {
+        &.isEditing {
           color: #888;
         }
 
@@ -118,7 +118,7 @@
     }
 
     &__name {
-      .completed & {
+      .isCompleted & {
         text-decoration: line-through;
       }
     }

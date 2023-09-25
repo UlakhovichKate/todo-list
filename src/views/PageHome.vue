@@ -1,18 +1,17 @@
 <template>
   <div class="page">
     <div class="page__content-wrapper">
-      <div class="todo-component">
+      <div class="todo">
         <todo-create @addTodo="addTodo" />
-
         <div
-          v-if="todoItems.length > 0"
-          class="todo-list"
+          v-if="todos.length > 0"
+          class="todo__list"
         >
           <todo-item
-            v-for="(item, index) in todoItems"
+            v-for="(todo, index) in todos"
             :id="index"
-            :key="item.id"
-            :todo-item="item"
+            :key="todo.id"
+            :todo="todo"
             @removeTodo="removeTodo"
           >
           </todo-item>
@@ -29,32 +28,31 @@
   import {ref} from 'vue';
   import {getAllTodos} from '@/api/apiTodos';
 
-  const todoItems = ref([]);
+  const todos = ref([]);
 
   const getTodos = async () => {
     const response = await getAllTodos();
-
-    todoItems.value = response.data?.todos;
+    todos.value = response.data?.todos;
   };
   getTodos();
 
   const addTodo = (item) => {
-    todoItems.value.push(item.value);
+    todos.value.push(item.value);
   };
 
   const removeTodo = (item) => {
-    todoItems.value.splice(todoItems.value.indexOf(item), 1);
+    todos.value.splice(todos.value.indexOf(item), 1);
   };
 </script>
 
 <style lang="scss" scoped>
-  .todo-component {
+  .todo {
     max-width: 500px;
     margin: 50px auto;
-  }
 
-  .todo-list {
-    max-width: 500px;
-    width: 100%;
+    &__list {
+      max-width: 500px;
+      width: 100%;
+    }
   }
 </style>

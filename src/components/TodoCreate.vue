@@ -1,15 +1,15 @@
 <template>
-  <div class="bar">
+  <div class="new-todo">
     <input
       v-model="todoContent"
       type="text"
-      class="bar__input"
+      class="new-todo__input"
       placeholder="add new todo"
     />
     <button
       @click="addTodo"
       type="button"
-      class="bar__btn bar__btn_submit"
+      class="new-todo__btn new-todo__btn_submit"
     >
       Create
     </button>
@@ -39,7 +39,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .bar {
+  .new-todo {
     display: grid;
     grid-template-columns: 1fr 80px;
     margin-bottom: 30px;
