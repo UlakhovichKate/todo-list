@@ -4,7 +4,7 @@
       <div class="todo">
         <todo-create @add-todo="addTodo" />
         <div
-          v-if="todos.length > 0"
+          v-if="todos.length"
           class="todo__list"
         >
           <todo-item
@@ -31,8 +31,13 @@
   const todos = ref([]);
 
   const getTodos = async () => {
-    await getAllTodos().then((response) => (todos.value = response.data?.todos));
+    try {
+      todos.value = (await getAllTodos()).data.todos;
+    } catch (e) {
+      console.log(e);
+    }
   };
+
   getTodos();
 
   const addTodo = (item) => {

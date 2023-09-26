@@ -6,12 +6,12 @@ const routes = [
     component: () => import('../layouts/LayoutDefault.vue'),
     children: [
       {
-        path: '/',
+        path: '',
         name: 'homePage',
         component: () => import('../views/PageHome.vue'),
       },
       {
-        path: '/:pathMatch(.*)*',
+        path: ':pathMatch(.*)*',
         name: 'notFoundPage',
         component: () => import('../views/PageNotFound.vue'),
       },
