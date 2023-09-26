@@ -1,25 +1,19 @@
 <template>
   <div
-    :class="{isCompleted: item.completed}"
+    :class="{isCompleted: item.completed, isEditing}"
     class="todo-item"
   >
     <input
-      ref="isEditing"
-      v-if="isEditing"
       v-model="item.todo"
       type="text"
       class="todo-item__name-input"
     />
-    <span
-      v-else
-      class="todo-item__name"
-    >
+    <span class="todo-item__name">
       {{ item.todo }}
     </span>
 
     <button
       :disabled="item.completed"
-      :class="{isEditing}"
       class="todo-item__btn todo-item__btn_edit"
       @click="editTodo()"
     >
@@ -100,13 +94,13 @@
         background-color: #20763c;
         color: #fff;
 
-        .completed & {
+        .isCompleted & {
           opacity: 0.5;
         }
       }
 
       &_edit {
-        &.isEditing {
+        .isEditing & {
           color: #888;
         }
 
@@ -120,6 +114,18 @@
     &__name {
       .isCompleted & {
         text-decoration: line-through;
+      }
+
+      .isEditing & {
+        display: none;
+      }
+    }
+
+    &__name-input {
+      display: none;
+
+      .isEditing & {
+        display: block;
       }
     }
   }

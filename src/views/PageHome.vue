@@ -31,8 +31,7 @@
   const todos = ref([]);
 
   const getTodos = async () => {
-    const response = await getAllTodos();
-    todos.value = response.data?.todos;
+    await getAllTodos().then((response) => (todos.value = response.data?.todos));
   };
   getTodos();
 
