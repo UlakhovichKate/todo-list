@@ -97,6 +97,11 @@
         .isCompleted & {
           opacity: 0.5;
         }
+
+        .isEditing & {
+          cursor: not-allowed;
+          pointer-events: none;
+        }
       }
 
       &_edit {
@@ -112,6 +117,8 @@
     }
 
     &__name {
+      padding: 3px 4px;
+
       .isCompleted & {
         text-decoration: line-through;
       }
