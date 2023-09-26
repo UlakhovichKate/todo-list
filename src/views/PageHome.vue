@@ -2,7 +2,7 @@
   <div class="page">
     <div class="page__content-wrapper">
       <div class="todo">
-        <todo-create @addTodo="addTodo" />
+        <todo-create @add-todo="addTodo" />
         <div
           v-if="todos.length > 0"
           class="todo__list"
@@ -12,7 +12,7 @@
             :id="index"
             :key="todo.id"
             :todo="todo"
-            @removeTodo="removeTodo"
+            @remove-todo="removeTodo"
           >
           </todo-item>
         </div>
